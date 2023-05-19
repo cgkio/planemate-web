@@ -53,27 +53,51 @@ window.addEventListener("load", function () {
   }
 
   // Reference to the lastTransaction in Firebase Realtime Database
-const lastTransactionRef = database.ref("lastTransaction");
+  const lastTransactionRef = database.ref("lastTransaction");
 
-// Listen for changes to the lastTransaction data
-lastTransactionRef.on("value", (snapshot) => {
-  const data = snapshot.val();
+  // Listen for changes to the lastTransaction data
+  lastTransactionRef.on("value", (snapshot) => {
+    const data = snapshot.val();
 
-  // Convert timestamps to readable format
-  const closeTimestamp = new Date(data.closeTimestamp).toLocaleString();
-  const firstPassengerTimestamp = new Date(data.firstPassengerTimestamp).toLocaleString();
-  const lastPassengerTimestamp = new Date(data.lastPassengerTimestamp).toLocaleString();
-  const openTimestamp = new Date(data.openTimestamp).toLocaleString();
+    // Convert timestamps to readable format
+    const closeTimestamp = new Date(data.closeTimestamp).toLocaleString();
+    const firstPassengerTimestamp = new Date(
+      data.firstPassengerTimestamp
+    ).toLocaleString();
+    const lastPassengerTimestamp = new Date(
+      data.lastPassengerTimestamp
+    ).toLocaleString();
+    const openTimestamp = new Date(data.openTimestamp).toLocaleString();
 
-  // Set the data to HTML elements
-  document.getElementById("boarding-duration").textContent = data.boardingDuration.toFixed(2) + ' seconds';
-  document.getElementById("door-open-duration").textContent = data.doorOpenDuration.toFixed(2) + ' seconds';
-  document.getElementById("close-timestamp").textContent = closeTimestamp;
-  document.getElementById("first-passenger-timestamp").textContent = firstPassengerTimestamp;
-  document.getElementById("last-passenger-timestamp").textContent = lastPassengerTimestamp;
-  document.getElementById("open-timestamp").textContent = openTimestamp;
-  document.getElementById("people-count").textContent = data.peopleCount;
-});
+    // Set the data to HTML elements
+    document.getElementById("boarding-duration").textContent =
+      data.boardingDuration.toFixed(2) + " seconds";
+    document.getElementById("door-open-duration").textContent =
+      data.doorOpenDuration.toFixed(2) + " seconds";
+    document.getElementById("close-timestamp").textContent = closeTimestamp;
+    document.getElementById("first-passenger-timestamp").textContent =
+      firstPassengerTimestamp;
+    document.getElementById("last-passenger-timestamp").textContent =
+      lastPassengerTimestamp;
+    document.getElementById("open-timestamp").textContent = openTimestamp;
+    document.getElementById("people-count").textContent = data.peopleCount;
+  });
+
+  // Function to calculate the time difference between now and the last updated timestamp
+  function getTimeSinceUpdate(lastUpdatedTimestamp) {
+    const now = new Date();
+    const updatedTimestamp = new Date(lastUpdatedTimestamp);
+    let diffInSeconds = Math.floor((now - updatedTimestamp) / 1000);
+
+    let days = Math.floor(diffInSeconds / (3600 * 24));
+    diffInSeconds -= days * 3600 * 24;
+    let hrs = Math.floor(diffInSeconds / 3600);
+    diffInSeconds -= hrs * 3600;
+    let mins = Math.floor(diffInSeconds / 60);
+    diffInSeconds -= mins * 60;
+
+    return `${days} days, ${hrs} hours, ${mins} minutes, and ${diffInSeconds} seconds ago.`;
+  }
 
   // Get reference to the status message in the database
   const statusMessageRef = database.ref("message");
@@ -83,17 +107,28 @@ lastTransactionRef.on("value", (snapshot) => {
     const message = snapshot.val();
     const statusMessageElement = document.getElementById("status-message");
 
-    // Add the flashing class
-    statusMessageElement.classList.add("flash");
+    // // Add the flashing class
+    // statusMessageElement.classList.add("flash");
 
-    // Remove the flashing class after 5 seconds
-    setTimeout(() => {
-      statusMessageElement.classList.remove("flash");
-    }, 5000);
+    // // Remove the flashing class after 5 seconds
+    // setTimeout(() => {
+    //   statusMessageElement.classList.remove("flash");
+    // }, 5000);
 
     statusMessageElement.innerText = message.main;
-    timestampUpdated.innerText = message.updated;
 
+    const timestampElement = document.getElementById("timestampUpdated");
+    timestampElement.innerText = getTimeSinceUpdate(message.updated);
+
+    // Clear the previous interval if it exists
+    if (window.timeSinceUpdateInterval) {
+      clearInterval(window.timeSinceUpdateInterval);
+    }
+
+    // Update the "time since last update" every second
+    window.timeSinceUpdateInterval = setInterval(() => {
+      timestampElement.innerText = getTimeSinceUpdate(message.updated);
+    }, 1000);
   });
 
   // Add this inside your "window.addEventListener("load", function ()" block
@@ -102,13 +137,9 @@ lastTransactionRef.on("value", (snapshot) => {
     "stats/AverageTurnaroundTimeOverall"
   );
 
-  const averageBoardingTimeRef = database.ref(
-    "stats/AverageBoardingTime"
-  );
+  const averageBoardingTimeRef = database.ref("stats/AverageBoardingTime");
 
-  const averageLoadRef = database.ref(
-    "stats/AverageLoad"
-  );
+  const averageLoadRef = database.ref("stats/AverageLoad");
 
   averageTurnaroundTimeRef.on("value", (snapshot) => {
     const averageTurnaroundTime = snapshot.val();
@@ -119,13 +150,12 @@ lastTransactionRef.on("value", (snapshot) => {
   averageBoardingTimeRef.on("value", (snapshot) => {
     const AverageBoardingTime = snapshot.val();
     document.getElementById("average-boarding-time").textContent =
-    AverageBoardingTime;
+      AverageBoardingTime;
   });
 
   averageLoadRef.on("value", (snapshot) => {
     const AverageLoad = snapshot.val();
-    document.getElementById("average-load").textContent =
-    AverageLoad;
+    document.getElementById("average-load").textContent = AverageLoad;
   });
 
   // Fetch individual door turnaround times from Firebase
