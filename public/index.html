@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Door Map</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <div id="status-message-container">
+      <h1 id="status-message"></h1>
+    </div>    
+
+    <div id="average-turnaround-time-container">
+      <h1>PlaneMate Turnaround Time</h1>
+      <h2>
+        Overall Average:
+        <span id="average-turnaround-time"></span>
+      </h2>
+    </div>
+
+    <div id="individual-turnaround-times-container">
+      <div class="row">
+        <div
+          class="individual-turnaround-time"
+          id="door1AverageTurnaroundTime"
+        ></div>
+        <div
+          class="individual-turnaround-time"
+          id="door2AverageTurnaroundTime"
+        ></div>
+        <div
+          class="individual-turnaround-time"
+          id="door3AverageTurnaroundTime"
+        ></div>
+        <div
+          class="individual-turnaround-time"
+          id="door4AverageTurnaroundTime"
+        ></div>
+        <div
+          class="individual-turnaround-time"
+          id="door5AverageTurnaroundTime"
+        ></div>
+        <div
+          class="individual-turnaround-time"
+          id="door6AverageTurnaroundTime"
+        ></div>
+        <div
+          class="individual-turnaround-time"
+          id="door7AverageTurnaroundTime"
+        ></div>
+        <div
+          class="individual-turnaround-time"
+          id="door8AverageTurnaroundTime"
+        ></div>
+      </div>
+
+      <div class="row">
+        <div
+          class="individual-turnaround-time"
+          id="door9AverageTurnaroundTime"
+        ></div>
+        <div
+          class="individual-turnaround-time"
+          id="door10AverageTurnaroundTime"
+        ></div>
+        <div
+          class="individual-turnaround-time"
+          id="door11AverageTurnaroundTime"
+        ></div>
+        <div
+          class="individual-turnaround-time"
+          id="door12AverageTurnaroundTime"
+        ></div>
+        <div
+          class="individual-turnaround-time"
+          id="door13AverageTurnaroundTime"
+        ></div>
+        <div
+          class="individual-turnaround-time"
+          id="door14AverageTurnaroundTime"
+        ></div>
+        <div
+          class="individual-turnaround-time"
+          id="door15AverageTurnaroundTime"
+        ></div>
+        <div
+          class="individual-turnaround-time"
+          id="door16AverageTurnaroundTime"
+        ></div>
+      </div>
+    </div>
+
+    <div id="average-turnaround-time-container">
+      <i>Averages calculated over last thirty days.</i>
+    </div>
+
+    <div id="callout-box">
+      <h3>Latest Activity</h3>
+      <p><b>Boarding Duration: </b><span id="boarding-duration"></span></p>
+      <p><b>Door Open Duration: </b><span id="door-open-duration"></span></p>
+      <p><b>Close Timestamp: </b><span id="close-timestamp"></span></p>
+      <p><b>First Passenger Timestamp: </b><span id="first-passenger-timestamp"></span></p>
+      <p><b>Last Passenger Timestamp: </b><span id="last-passenger-timestamp"></span></p>
+      <p><b>Open Timestamp: </b><span id="open-timestamp"></span></p>
+      <p><b>People Count: </b><span id="people-count"></span></p>
+    </div>    
+
+    <div id="map-container">
+      <img src="map.png" alt="Map" />
+      <div id="door1" class="door"></div>
+      <div id="door2" class="door"></div>
+      <div id="door3" class="door"></div>
+      <div id="door4" class="door"></div>
+      <div id="door5" class="door"></div>
+      <div id="door6" class="door"></div>
+      <div id="door7" class="door"></div>
+      <div id="door8" class="door"></div>
+      <div id="door9" class="door"></div>
+      <div id="door10" class="door"></div>
+      <div id="door11" class="door"></div>
+      <div id="door12" class="door"></div>
+      <div id="door13" class="door"></div>
+      <div id="door14" class="door"></div>
+      <div id="door15" class="door"></div>
+      <div id="door16" class="door"></div>
+      <div id="door1Msg" class="doorMsg"></div>
+      <div id="door2Msg" class="doorMsg"></div>
+      <div id="door3Msg" class="doorMsg"></div>
+      <div id="door4Msg" class="doorMsg"></div>
+      <div id="door5Msg" class="doorMsg"></div>
+      <div id="door6Msg" class="doorMsg"></div>
+      <div id="door7Msg" class="doorMsg"></div>
+      <div id="door8Msg" class="doorMsg"></div>
+      <div id="door9Msg" class="doorMsg"></div>
+      <div id="door10Msg" class="doorMsg"></div>
+      <div id="door11Msg" class="doorMsg"></div>
+      <div id="door12Msg" class="doorMsg"></div>
+      <div id="door13Msg" class="doorMsg"></div>
+      <div id="door14Msg" class="doorMsg"></div>
+      <div id="door15Msg" class="doorMsg"></div>
+      <div id="door16Msg" class="doorMsg"></div>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-database-compat.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBe5xjnc0ysOn1eHySuntTN_uVwCtNcWfQ",
+        authDomain: "planemate-4aabc.firebaseapp.com",
+        databaseURL: "https://planemate-4aabc-default-rtdb.firebaseio.com",
+        projectId: "planemate-4aabc",
+        storageBucket: "planemate-4aabc.appspot.com",
+        messagingSenderId: "213497172210",
+        appId: "1:213497172210:web:fa19e97749593ca0d5c06b",
+      };
+
+      const app = firebase.initializeApp(firebaseConfig);
+    </script>
+
+    <!-- Custom script -->
+    <script src="script.js"></script>
+  </body>
+</html>
