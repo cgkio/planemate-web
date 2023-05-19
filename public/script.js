@@ -1,21 +1,21 @@
 window.addEventListener("load", function () {
   const doorPositions = [
-    { x: 670, y: 530 }, // Door1
-    { x: 705, y: 530 }, // Door2
-    { x: 850, y: 530 }, // Door3
-    { x: 885, y: 530 }, // Door4
-    { x: 1060, y: 530 }, // Door5
-    { x: 1095, y: 530 }, // Door6
-    { x: 1235, y: 530 }, // Door7
-    { x: 1270, y: 530 }, // Door8
-    { x: 660, y: 673 }, // Door9
-    { x: 705, y: 673 }, // Door10
-    { x: 850, y: 673 }, // Door11
-    { x: 885, y: 673 }, // Door12
-    { x: 1050, y: 673 }, // Door13
-    { x: 1085, y: 673 }, // Door14
-    { x: 1235, y: 673 }, // Door15
-    { x: 1270, y: 673 }, // Door16
+    { x: 670, y: 327 }, // Door1
+    { x: 705, y: 327 }, // Door2
+    { x: 850, y: 327 }, // Door3
+    { x: 885, y: 327 }, // Door4
+    { x: 1060, y: 327 }, // Door5
+    { x: 1095, y: 327 }, // Door6
+    { x: 1235, y: 327 }, // Door7
+    { x: 1270, y: 327 }, // Door8
+    { x: 660, y: 413 }, // Door9
+    { x: 705, y: 413 }, // Door10
+    { x: 850, y: 413 }, // Door11
+    { x: 885, y: 413 }, // Door12
+    { x: 1050, y: 413 }, // Door13
+    { x: 1085, y: 413 }, // Door14
+    { x: 1235, y: 413 }, // Door15
+    { x: 1270, y: 413 }, // Door16
   ];
 
   // Initialize doors and set their positions
@@ -99,10 +99,31 @@ lastTransactionRef.on("value", (snapshot) => {
   const averageTurnaroundTimeRef = database.ref(
     "stats/AverageTurnaroundTimeOverall"
   );
+
+  const averageBoardingTimeRef = database.ref(
+    "stats/AverageBoardingTime"
+  );
+
+  const averageLoadRef = database.ref(
+    "stats/AverageLoad"
+  );
+
   averageTurnaroundTimeRef.on("value", (snapshot) => {
     const averageTurnaroundTime = snapshot.val();
     document.getElementById("average-turnaround-time").textContent =
       averageTurnaroundTime;
+  });
+
+  averageBoardingTimeRef.on("value", (snapshot) => {
+    const AverageBoardingTime = snapshot.val();
+    document.getElementById("average-boarding-time").textContent =
+    AverageBoardingTime;
+  });
+
+  averageLoadRef.on("value", (snapshot) => {
+    const AverageLoad = snapshot.val();
+    document.getElementById("average-load").textContent =
+    AverageLoad;
   });
 
   // Fetch individual door turnaround times from Firebase
