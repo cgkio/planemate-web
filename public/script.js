@@ -76,7 +76,7 @@ lastTransactionRef.on("value", (snapshot) => {
 });
 
   // Get reference to the status message in the database
-  const statusMessageRef = database.ref("message/main");
+  const statusMessageRef = database.ref("message");
 
   // Listen for changes to the status message
   statusMessageRef.on("value", (snapshot) => {
@@ -91,7 +91,9 @@ lastTransactionRef.on("value", (snapshot) => {
       statusMessageElement.classList.remove("flash");
     }, 5000);
 
-    statusMessageElement.innerText = message;
+    statusMessageElement.innerText = message.main;
+    timestampUpdated.innerText = message.updated;
+
   });
 
   // Add this inside your "window.addEventListener("load", function ()" block
