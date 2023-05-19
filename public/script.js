@@ -29,36 +29,6 @@ window.addEventListener("load", function () {
     }
   });
 
-  const doorMsgPositions = [
-    { x: 630, y: 443 }, // Door1
-    { x: 675, y: 443 }, // Door2
-    { x: 810, y: 443 }, // Door3
-    { x: 855, y: 443 }, // Door4
-    { x: 1020, y: 443 }, // Door5
-    { x: 1065, y: 443 }, // Door6
-    { x: 1195, y: 443 }, // Door7
-    { x: 1240, y: 443 }, // Door8
-    { x: 630, y: 755 }, // Door9
-    { x: 675, y: 755 }, // Door10
-    { x: 810, y: 755 }, // Door11
-    { x: 855, y: 755 }, // Door12
-    { x: 1010, y: 755 }, // Door13
-    { x: 1055, y: 755 }, // Door14
-    { x: 1195, y: 755 }, // Door15
-    { x: 1240, y: 755 }, // Door16
-  ];
-
-  // Initialize turnaround time messages and set their positions
-  doorMsgPositions.forEach((position, index) => {
-    try {
-      const doorMsg = document.getElementById(`door${index + 1}Msg`);
-      doorMsg.style.left = `${position.x}px`;
-      doorMsg.style.top = `${position.y}px`;
-    } catch (error) {
-      console.error(`Error in doorMsg${index + 1}:`, error);
-    }
-  });
-
   // Function to update door color based on status
   function updateDoorColor(doorNumber, status) {
     const door = document.getElementById(`door${doorNumber}`);
@@ -70,12 +40,6 @@ window.addEventListener("load", function () {
     }
   }
 
-  // Function to update door message status
-  function updateDoorMsg(doorNumber, status) {
-    document.getElementById(`door${doorNumber}Msg`).innerHTML =
-      "<div class='smalltext'>Last Reported Turnaround</div>" + status;
-  }
-
   // Connect to Firebase Realtime Database
   const database = firebase.database();
 
@@ -85,15 +49,6 @@ window.addEventListener("load", function () {
     doorRef.on("value", (snapshot) => {
       const status = snapshot.val();
       updateDoorColor(i, status);
-    });
-  }
-
-  // Listen for changes in door message statuses
-  for (let i = 1; i <= 16; i++) {
-    const doorMsgRef = firebase.database().ref(`doorsMsg/Door${i}Msg`);
-    doorMsgRef.on("value", (snapshot) => {
-      const status = snapshot.val();
-      updateDoorMsg(i, status);
     });
   }
 
