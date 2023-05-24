@@ -60,14 +60,10 @@ window.addEventListener("load", function () {
     const data = snapshot.val();
 
     // Convert timestamps to readable format
-    const closeTimestamp = new Date(data.closeTimestamp).toLocaleString();
-    const firstPassengerTimestamp = new Date(
-      data.firstPassengerTimestamp
-    ).toLocaleString();
-    const lastPassengerTimestamp = new Date(
-      data.lastPassengerTimestamp
-    ).toLocaleString();
-    const openTimestamp = new Date(data.openTimestamp).toLocaleString();
+    const closeTimestamp = moment(data.closeTimestamp).format('LTS');
+    const firstPassengerTimestamp = moment(data.firstPassengerTimestamp).format('LTS');
+    const lastPassengerTimestamp = moment(data.lastPassengerTimestamp).format('LTS');
+    const openTimestamp = moment(data.openTimestamp).format('LTS');
 
     // Set the data to HTML elements
     document.getElementById("boarding-duration").textContent =
@@ -81,6 +77,7 @@ window.addEventListener("load", function () {
       lastPassengerTimestamp;
     document.getElementById("open-timestamp").textContent = openTimestamp;
     document.getElementById("people-count").textContent = data.peopleCount;
+    document.getElementById("passenger-count").textContent = data.activePassengerCount;
   });
 
   // Function to calculate the time difference between now and the last updated timestamp

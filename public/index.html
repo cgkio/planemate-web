@@ -15,13 +15,15 @@
 
     <div id="callout-box">
       <h3>Latest Activity</h3>
-      <p><b>Boarding Duration: </b><span id="boarding-duration"></span></p>
-      <p><b>Door Open Duration: </b><span id="door-open-duration"></span></p>
-      <p><b>Close Timestamp: </b><span id="close-timestamp"></span></p>
-      <p><b>First Passenger Timestamp: </b><span id="first-passenger-timestamp"></span></p>
-      <p><b>Last Passenger Timestamp: </b><span id="last-passenger-timestamp"></span></p>
-      <p><b>Open Timestamp: </b><span id="open-timestamp"></span></p>
-      <p><b>People Count: </b><span id="people-count"></span></p>
+      <p>Dock: B41 - B44 (Door: 1)</p>
+      <br>
+      <p><b>Boarding: </b><span id="boarding-duration"></span></p>
+      <p><i><span id="first-passenger-timestamp"></span> to <span id="last-passenger-timestamp"></span></i></p>
+      <br>
+      <p><b>Dock Occupancy: </b><span id="door-open-duration"></span></p>
+      <p><i><span id="open-timestamp"></span> to <span id="close-timestamp"></span></i></p>
+      <br>
+      <p><b>Passenger Count: </b><span id="people-count"></span></p>
     </div>
     
     <div id="callout-box-2">
@@ -40,6 +42,11 @@
       <h3>Average Loads</h3>
       <p><span id="average-load"></span></p>
       <p>Calculated over last thirty days.</p>
+    </div>
+
+    <div id="callout-box-5">
+      <h3>Live Passenger Count</h3>
+      <p><span id="passenger-count"></span></p>
     </div>
 
     <div id="map-container">
@@ -81,6 +88,7 @@
     </script>
 
     <!-- Custom script -->
+    <script src="moment.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
