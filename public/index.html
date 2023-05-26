@@ -14,39 +14,47 @@
     </div>    
 
     <div id="callout-box">
-      <h3>Latest Activity</h3>
+      <h3>Latest Reported Activity</h3>
       <p>Dock: B41 - B44 (Door: 1)</p>
       <br>
-      <p><b>Boarding: </b><span id="boarding-duration"></span></p>
-      <p><i><span id="first-passenger-timestamp"></span> to <span id="last-passenger-timestamp"></span></i></p>
-      <br>
-      <p><b>Dock Occupancy: </b><span id="door-open-duration"></span></p>
+      <p><b>Door Opened: </b><span id="door-open-duration"></span></p>
       <p><i><span id="open-timestamp"></span> to <span id="close-timestamp"></span></i></p>
       <br>
+      <p><b>Boarding Time: </b><span id="boarding-duration"></span></p>
+      <p><i><span id="first-passenger-timestamp"></span> to <span id="last-passenger-timestamp"></span></i></p>
+      <br>
       <p><b>Passenger Count: </b><span id="people-count"></span></p>
+      <br>
+      <p><b>PlaneMate Available On-Time: </b><span id="planeMate-OnTimeYN"></span></p>
     </div>
     
     <div id="callout-box-2">
       <h3>Average Turnaround Time</h3>
-      <p><span id="average-turnaround-time"></span></p>
+      <p><span id="average-turnaround-time" class="dataCallout"></span></p>
       <p>Calculated over last thirty days.</p>
     </div>
 
     <div id="callout-box-3">
       <h3>Average Boarding Time</h3>
-      <p><span id="average-boarding-time"></span></p>
+      <p><span id="average-boarding-time" class="dataCallout"></span></p>
       <p>Calculated over last thirty days.</p>
     </div>
 
     <div id="callout-box-4">
-      <h3>Average Loads</h3>
-      <p><span id="average-load"></span></p>
+      <h3>Average Passenger Loads</h3>
+      <p><span id="average-load" class="dataCallout"></span></p>
       <p>Calculated over last thirty days.</p>
     </div>
 
     <div id="callout-box-5">
       <h3>Live Passenger Count</h3>
-      <p><span id="passenger-count"></span></p>
+      <p><span id="passenger-count" class="dataCallout"></span></p>
+    </div>
+
+    <div id="callout-box-6">
+      <h3>On-Time Availability</h3>
+      <p><span id="planeMate-OnTime-stat" class="dataCallout"></span></p>
+      <p>Calculated over last thirty days.</p>
     </div>
 
     <div id="map-container">

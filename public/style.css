@@ -85,71 +85,103 @@
 } */
 
 #callout-box {
-  position: absolute;  /* This will make the box float */
-  top: 650px;          /* Adjust these values for your specific X-Y position */
-  left: 50px;         /* Adjust these values for your specific X-Y position */
-  width: 300px;       /* Adjust this value for your preferred width */
-  padding: 20px;      /* Adjust this value for your preferred padding */
+  position: absolute; /* This will make the box float */
+  top: 550px; /* Adjust these values for your specific X-Y position */
+  left: 50px; /* Adjust these values for your specific X-Y position */
+  width: 300px; /* Adjust this value for your preferred width */
+  padding: 20px; /* Adjust this value for your preferred padding */
   background-color: lightyellow; /* This will set the background to light yellow */
   border: 1px solid black; /* Optional: This will set the border to black */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Optional: This will set a shadow around the box */
-  z-index: 100;       /* This ensures the box floats on top of other elements */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Optional: This will set a shadow around the box */
+  z-index: 100; /* This ensures the box floats on top of other elements */
 }
 
 #callout-box-2 {
-  position: absolute;  /* This will make the box float */
-  top: 877px;          /* Adjust these values for your specific X-Y position */
-  left: 500px;         /* Adjust these values for your specific X-Y position */
-  width: 300px;       /* Adjust this value for your preferred width */
-  padding: 20px;      /* Adjust this value for your preferred padding */
-  background-color: rgb(255, 255, 255); /* This will set the background to light yellow */
+  position: absolute; /* This will make the box float */
+  top: 877px; /* Adjust these values for your specific X-Y position */
+  left: 500px; /* Adjust these values for your specific X-Y position */
+  width: 250px; /* Adjust this value for your preferred width */
+  padding: 20px; /* Adjust this value for your preferred padding */
+  background-color: rgb(
+    138,
+    216,
+    164
+  ); /* This will set the background to light yellow */
   border: 1px solid black; /* Optional: This will set the border to black */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Optional: This will set a shadow around the box */
-  z-index: 100;       /* This ensures the box floats on top of other elements */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Optional: This will set a shadow around the box */
+  z-index: 100; /* This ensures the box floats on top of other elements */
 }
 
 #callout-box-3 {
-  position: absolute;  /* This will make the box float */
-  top: 877px;          /* Adjust these values for your specific X-Y position */
-  left: 900px;         /* Adjust these values for your specific X-Y position */
-  width: 300px;       /* Adjust this value for your preferred width */
-  padding: 20px;      /* Adjust this value for your preferred padding */
-  background-color: rgb(255, 255, 255); /* This will set the background to light yellow */
+  position: absolute; /* This will make the box float */
+  top: 877px; /* Adjust these values for your specific X-Y position */
+  left: 825px; /* Adjust these values for your specific X-Y position */
+  width: 250px; /* Adjust this value for your preferred width */
+  padding: 20px; /* Adjust this value for your preferred padding */
+  background-color: rgb(
+    138,
+    216,
+    164
+  ); /* This will set the background to light yellow */
   border: 1px solid black; /* Optional: This will set the border to black */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Optional: This will set a shadow around the box */
-  z-index: 100;       /* This ensures the box floats on top of other elements */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Optional: This will set a shadow around the box */
+  z-index: 100; /* This ensures the box floats on top of other elements */
 }
 
 #callout-box-4 {
-  position: absolute;  /* This will make the box float */
-  top: 877px;          /* Adjust these values for your specific X-Y position */
-  left: 1300px;         /* Adjust these values for your specific X-Y position */
-  width: 300px;       /* Adjust this value for your preferred width */
-  padding: 20px;      /* Adjust this value for your preferred padding */
-  background-color: rgb(255, 255, 255); /* This will set the background to light yellow */
+  position: absolute; /* This will make the box float */
+  top: 877px; /* Adjust these values for your specific X-Y position */
+  left: 1150px; /* Adjust these values for your specific X-Y position */
+  width: 250px; /* Adjust this value for your preferred width */
+  padding: 20px; /* Adjust this value for your preferred padding */
+  background-color: rgb(
+    138,
+    216,
+    164
+  ); /* This will set the background to light yellow */
   border: 1px solid black; /* Optional: This will set the border to black */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Optional: This will set a shadow around the box */
-  z-index: 100;       /* This ensures the box floats on top of other elements */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Optional: This will set a shadow around the box */
+  z-index: 100; /* This ensures the box floats on top of other elements */
 }
 
 #callout-box-5 {
-  position: absolute;  /* This will make the box float */
-  top: 350px;          /* Adjust these values for your specific X-Y position */
-  left: 50px;         /* Adjust these values for your specific X-Y position */
-  width: 300px;       /* Adjust this value for your preferred width */
-  padding: 20px;      /* Adjust this value for your preferred padding */
+  position: absolute; /* This will make the box float */
+  top: 350px; /* Adjust these values for your specific X-Y position */
+  left: 50px; /* Adjust these values for your specific X-Y position */
+  width: 300px; /* Adjust this value for your preferred width */
+  padding: 20px; /* Adjust this value for your preferred padding */
   background-color: lightyellow; /* This will set the background to light yellow */
   border: 1px solid black; /* Optional: This will set the border to black */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Optional: This will set a shadow around the box */
-  z-index: 100;       /* This ensures the box floats on top of other elements */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Optional: This will set a shadow around the box */
+  z-index: 100; /* This ensures the box floats on top of other elements */
+}
+
+#callout-box-6 {
+  position: absolute; /* This will make the box float */
+  top: 877px; /* Adjust these values for your specific X-Y position */
+  left: 1475px; /* Adjust these values for your specific X-Y position */
+  width: 250px; /* Adjust this value for your preferred width */
+  padding: 20px; /* Adjust this value for your preferred padding */
+  background-color: rgb(
+    138,
+    216,
+    164
+  ); /* This will set the background to light yellow */
+  border: 1px solid black; /* Optional: This will set the border to black */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Optional: This will set a shadow around the box */
+  z-index: 100; /* This ensures the box floats on top of other elements */
 }
 
 #passenger-count {
   font-size: 46px;
 }
 
+.dataCallout {
+  font-size: 36px;
+}
+
 #status-message {
-  color: white;    /* This will set the text color to white */
+  color: white; /* This will set the text color to white */
   text-align: center; /* This will center the text */
 }
 

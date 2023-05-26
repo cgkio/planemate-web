@@ -60,12 +60,16 @@ window.addEventListener("load", function () {
     const data = snapshot.val();
 
     // Convert timestamps to readable format
-    const closeTimestamp = moment(data.closeTimestamp).format('LTS');
-    const firstPassengerTimestamp = moment(data.firstPassengerTimestamp).format('LTS');
-    const lastPassengerTimestamp = moment(data.lastPassengerTimestamp).format('LTS');
-    const openTimestamp = moment(data.openTimestamp).format('LTS');
+    const closeTimestamp = moment(data.closeTimestamp).format("LTS");
+    const firstPassengerTimestamp = moment(data.firstPassengerTimestamp).format(
+      "LTS"
+    );
+    const lastPassengerTimestamp = moment(data.lastPassengerTimestamp).format(
+      "LTS"
+    );
+    const openTimestamp = moment(data.openTimestamp).format("LTS");
 
-    // Set the data to HTML elements
+    // Set the data to HTML elements for the last reported transaction call out
     document.getElementById("boarding-duration").textContent =
       data.boardingDuration.toFixed(2) + " seconds";
     document.getElementById("door-open-duration").textContent =
@@ -76,8 +80,10 @@ window.addEventListener("load", function () {
     document.getElementById("last-passenger-timestamp").textContent =
       lastPassengerTimestamp;
     document.getElementById("open-timestamp").textContent = openTimestamp;
+    document.getElementById("planeMate-OnTimeYN").textContent = data.planeMateOnTime;
     document.getElementById("people-count").textContent = data.peopleCount;
-    document.getElementById("passenger-count").textContent = data.activePassengerCount;
+    document.getElementById("passenger-count").textContent =
+      data.activePassengerCount;
   });
 
   // Function to calculate the time difference between now and the last updated timestamp
@@ -104,14 +110,6 @@ window.addEventListener("load", function () {
     const message = snapshot.val();
     const statusMessageElement = document.getElementById("status-message");
 
-    // // Add the flashing class
-    // statusMessageElement.classList.add("flash");
-
-    // // Remove the flashing class after 5 seconds
-    // setTimeout(() => {
-    //   statusMessageElement.classList.remove("flash");
-    // }, 5000);
-
     statusMessageElement.innerText = message.main;
 
     const timestampElement = document.getElementById("timestampUpdated");
@@ -128,43 +126,20 @@ window.addEventListener("load", function () {
     }, 1000);
   });
 
-  // Add this inside your "window.addEventListener("load", function ()" block
-  // Fetch average turnaround time overall from Firebase
-  const averageTurnaroundTimeRef = database.ref(
-    "stats/AverageTurnaroundTimeOverall"
-  );
+  // Reference to the stats in Firebase Realtime Database
+  const statsRef = database.ref("stats");
 
-  const averageBoardingTimeRef = database.ref("stats/AverageBoardingTime");
+  // Listen for changes to the lastTransaction data
+  statsRef.on("value", (snapshot) => {
+    const statsdata = snapshot.val();
 
-  const averageLoadRef = database.ref("stats/AverageLoad");
-
-  averageTurnaroundTimeRef.on("value", (snapshot) => {
-    const averageTurnaroundTime = snapshot.val();
-    document.getElementById("average-turnaround-time").textContent =
-      averageTurnaroundTime;
-  });
-
-  averageBoardingTimeRef.on("value", (snapshot) => {
-    const AverageBoardingTime = snapshot.val();
+    // Set the data to HTML elements
+    document.getElementById("average-load").textContent = statsdata.AverageLoad;
     document.getElementById("average-boarding-time").textContent =
-      AverageBoardingTime;
+      statsdata.AverageBoardingTime;
+    document.getElementById("average-turnaround-time").textContent =
+      statsdata.AverageTurnaroundTimeOverall;
+    document.getElementById("planeMate-OnTime-stat").textContent =
+      statsdata.planeMateOnTime;
   });
-
-  averageLoadRef.on("value", (snapshot) => {
-    const AverageLoad = snapshot.val();
-    document.getElementById("average-load").textContent = AverageLoad;
-  });
-
-  // Fetch individual door turnaround times from Firebase
-  for (let i = 1; i <= 16; i++) {
-    const doorAverageTurnaroundTimeRef = database.ref(
-      `stats/Door${i}AverageTurnaroundTime`
-    );
-    doorAverageTurnaroundTimeRef.on("value", (snapshot) => {
-      const doorAverageTurnaroundTime = snapshot.val();
-      document.getElementById(
-        `door${i}AverageTurnaroundTime`
-      ).textContent = `Door ${i}: ${doorAverageTurnaroundTime}`;
-    });
-  }
 });
