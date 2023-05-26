@@ -81,7 +81,9 @@ window.addEventListener("load", function () {
       lastPassengerTimestamp;
     document.getElementById("open-timestamp").textContent = openTimestamp;
     document.getElementById("planeMate-OnTimeYN").textContent = data.planeMateOnTime;
-    document.getElementById("people-count").textContent = data.peopleCount;
+    document.getElementById("location").textContent = data.location;
+    document.getElementById("turnaround-time").textContent = data.turnaroundTime;
+    // document.getElementById("people-count").textContent = data.peopleCount;
     document.getElementById("passenger-count").textContent =
       data.activePassengerCount;
   });

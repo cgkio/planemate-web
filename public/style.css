@@ -86,7 +86,7 @@
 
 #callout-box {
   position: absolute; /* This will make the box float */
-  top: 550px; /* Adjust these values for your specific X-Y position */
+  top: 514px; /* Adjust these values for your specific X-Y position */
   left: 50px; /* Adjust these values for your specific X-Y position */
   width: 300px; /* Adjust this value for your preferred width */
   padding: 20px; /* Adjust this value for your preferred padding */
@@ -139,18 +139,6 @@
     216,
     164
   ); /* This will set the background to light yellow */
-  border: 1px solid black; /* Optional: This will set the border to black */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Optional: This will set a shadow around the box */
-  z-index: 100; /* This ensures the box floats on top of other elements */
-}
-
-#callout-box-5 {
-  position: absolute; /* This will make the box float */
-  top: 350px; /* Adjust these values for your specific X-Y position */
-  left: 50px; /* Adjust these values for your specific X-Y position */
-  width: 300px; /* Adjust this value for your preferred width */
-  padding: 20px; /* Adjust this value for your preferred padding */
-  background-color: lightyellow; /* This will set the background to light yellow */
   border: 1px solid black; /* Optional: This will set the border to black */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Optional: This will set a shadow around the box */
   z-index: 100; /* This ensures the box floats on top of other elements */

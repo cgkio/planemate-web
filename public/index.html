@@ -14,8 +14,9 @@
     </div>    
 
     <div id="callout-box">
-      <h3>Latest Reported Activity</h3>
-      <p>Dock: B41 - B44 (Door: 1)</p>
+      <p><b>Location: </b><span id="location"></span></p>
+      <br>
+      <p><b>PlaneMate Available On-Time: </b><span id="planeMate-OnTimeYN"></span></p>
       <br>
       <p><b>Door Opened: </b><span id="door-open-duration"></span></p>
       <p><i><span id="open-timestamp"></span> to <span id="close-timestamp"></span></i></p>
@@ -23,9 +24,11 @@
       <p><b>Boarding Time: </b><span id="boarding-duration"></span></p>
       <p><i><span id="first-passenger-timestamp"></span> to <span id="last-passenger-timestamp"></span></i></p>
       <br>
-      <p><b>Passenger Count: </b><span id="people-count"></span></p>
+      <p><b>Turnaround Time: </b><span id="turnaround-time"></span></p>
       <br>
-      <p><b>PlaneMate Available On-Time: </b><span id="planeMate-OnTimeYN"></span></p>
+      <p><b>Passenger Count: </b></p>
+      <span id="passenger-count" class="dataCallout"></span>
+      <br>
     </div>
     
     <div id="callout-box-2">
@@ -44,11 +47,6 @@
       <h3>Average Passenger Loads</h3>
       <p><span id="average-load" class="dataCallout"></span></p>
       <p>Calculated over last thirty days.</p>
-    </div>
-
-    <div id="callout-box-5">
-      <h3>Live Passenger Count</h3>
-      <p><span id="passenger-count" class="dataCallout"></span></p>
     </div>
 
     <div id="callout-box-6">
