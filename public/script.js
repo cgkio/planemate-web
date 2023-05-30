@@ -59,33 +59,20 @@ window.addEventListener("load", function () {
   lastTransactionRef.on("value", (snapshot) => {
     const data = snapshot.val();
 
-    // Convert timestamps to readable format
-    const closeTimestamp = moment(data.closeTimestamp).format("LTS");
-    const firstPassengerTimestamp = moment(data.firstPassengerTimestamp).format(
-      "LTS"
-    );
-    const lastPassengerTimestamp = moment(data.lastPassengerTimestamp).format(
-      "LTS"
-    );
-    const openTimestamp = moment(data.openTimestamp).format("LTS");
-
     // Set the data to HTML elements for the last reported transaction call out
-    document.getElementById("boarding-duration").textContent =
-      data.boardingDuration.toFixed(2) + " seconds";
-    document.getElementById("door-open-duration").textContent =
-      data.doorOpenDuration.toFixed(2) + " seconds";
-    document.getElementById("close-timestamp").textContent = closeTimestamp;
-    document.getElementById("first-passenger-timestamp").textContent =
-      firstPassengerTimestamp;
-    document.getElementById("last-passenger-timestamp").textContent =
-      lastPassengerTimestamp;
-    document.getElementById("open-timestamp").textContent = openTimestamp;
+    // document.getElementById("boarding-duration").textContent =
+    //   data.boardingDuration.toFixed(2) + " seconds";
+    document.getElementById("boarding-duration").textContent = data.boardingDuration;
+    document.getElementById("door-open-duration").textContent = data.doorOpenDuration;
+    document.getElementById("close-timestamp").textContent = data.closeTimestamp;
+    document.getElementById("first-passenger-timestamp").textContent = data.firstPassengerTimestamp;
+    document.getElementById("last-passenger-timestamp").textContent = data.lastPassengerTimestamp;
+    document.getElementById("open-timestamp").textContent = data.openTimestamp;
     document.getElementById("planeMate-OnTimeYN").textContent = data.planeMateOnTime;
     document.getElementById("location").textContent = data.location;
     document.getElementById("turnaround-time").textContent = data.turnaroundTime;
     // document.getElementById("people-count").textContent = data.peopleCount;
-    document.getElementById("passenger-count").textContent =
-      data.activePassengerCount;
+    document.getElementById("passenger-count").textContent =data.activePassengerCount;
   });
 
   // Function to calculate the time difference between now and the last updated timestamp
