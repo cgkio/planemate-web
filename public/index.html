@@ -14,20 +14,24 @@
     </div>    
 
     <div id="callout-box">
-      <p><b>Location: </b><span id="location"></span></p>
+      <p><b>Location: </b>
+      <br><span id="location" class="dataCallout"></span></p>
       <br>
-      <p><b>PlaneMate Available On-Time: </b><span id="planeMate-OnTimeYN"></span></p>
+      <p><b>PlaneMate Available On-Time: </b>
+      <br><span id="planeMate-OnTimeYN" class="dataCallout"></span></p>
       <br>
-      <p><b>Door Opened: </b><span id="door-open-duration"></span></p>
+      <p><b>Door Opened: </b>
+      <br><span id="door-open-duration" class="dataCallout"></span></p>
       <p><i><span id="open-timestamp"></span> to <span id="close-timestamp"></span></i></p>
       <br>
-      <p><b>Boarding Time: </b><span id="boarding-duration"></span></p>
+      <p><b>Boarding Time: </b>
+      <br><span id="boarding-duration" class="dataCallout"></span></p>
       <p><i><span id="first-passenger-timestamp"></span> to <span id="last-passenger-timestamp"></span></i></p>
       <br>
-      <p><b>Turnaround Time: </b><span id="turnaround-time"></span></p>
+      <p><b>Turnaround Time: </b><span id="turnaround-time" class="dataCallout"></span></p>
       <br>
       <p><b>Passenger Count: </b></p>
-      <span id="passenger-count" class="dataCallout"></span>
+      <span id="passenger-count" class="dataCalloutXL"></span>
       <br>
     </div>
     
@@ -55,6 +59,46 @@
       <p>Calculated over last thirty days.</p>
     </div>
 
+    <div id="callout-box-7">
+      
+      <div id="variables-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Variable 1</th>
+              <th>Variable 2</th>
+              <th>Variable 3</th>
+              <th>Variable 4</th>
+              <th>Variable 5</th>
+              <th>Variable 6</th>
+              <th>Variable 7</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="variables-values">
+              <td>Value 1</td>
+              <td>Value 2</td>
+              <td>Value 3</td>
+              <td>Value 4</td>
+              <td>Value 5</td>
+              <td>Value 6</td>
+              <td>Value 7</td>
+            </tr>
+            <tr id="variables-descriptions">
+              <td>Description 1</td>
+              <td>Description 2</td>
+              <td>Description 3</td>
+              <td>Description 4</td>
+              <td>Description 5</td>
+              <td>Description 6</td>
+              <td>Description 7</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
     <div id="map-container">
       <img src="map.png" alt="Map" />
       <div id="door1" class="door"></div>
@@ -73,7 +117,7 @@
       <div id="door14" class="door"></div>
       <div id="door15" class="door"></div>
       <div id="door16" class="door"></div>
-    </div>
+    </div>    
 
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app-compat.js"></script>

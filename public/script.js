@@ -91,6 +91,28 @@ window.addEventListener("load", function () {
     return `${days} days, ${hrs} hours, ${mins} minutes, and ${diffInSeconds} seconds ago.`;
   }
 
+  function updateVariables() {
+    // Fetch variables from your node app, this is a dummy code.
+    const variables = {
+      var1: { value: 'Value 1', description: 'Description 1' },
+      var2: { value: 'Value 2', description: 'Description 2' },
+      var3: { value: 'Value 3', description: 'Description 3' },
+      var4: { value: 'Value 4', description: 'Description 4' },
+      var5: { value: 'Value 5', description: 'Description 5' },
+      var6: { value: 'Value 6', description: 'Description 6' },
+      var7: { value: 'Value 7', description: 'Description 7' },
+    };
+  
+    // Update values and descriptions.
+    for (let i = 1; i <= 7; i++) {
+      document.getElementById('variables-values').children[i-1].innerText = variables[`var${i}`].value;
+      document.getElementById('variables-descriptions').children[i-1].innerText = variables[`var${i}`].description;
+    }
+  }
+  
+  // Call the function on page load.
+  updateVariables();  
+
   // Get reference to the status message in the database
   const statusMessageRef = database.ref("message");
 

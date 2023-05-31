@@ -86,9 +86,9 @@
 
 #callout-box {
   position: absolute; /* This will make the box float */
-  top: 514px; /* Adjust these values for your specific X-Y position */
+  top: 300px; /* Adjust these values for your specific X-Y position */
   left: 50px; /* Adjust these values for your specific X-Y position */
-  width: 300px; /* Adjust this value for your preferred width */
+  width: 350px; /* Adjust this value for your preferred width */
   padding: 20px; /* Adjust this value for your preferred padding */
   background-color: lightyellow; /* This will set the background to light yellow */
   border: 1px solid black; /* Optional: This will set the border to black */
@@ -160,12 +160,24 @@
   z-index: 100; /* This ensures the box floats on top of other elements */
 }
 
-#passenger-count {
-  font-size: 46px;
+#callout-box-7 {
+  position: absolute; /* This will make the box float */
+  top: 151px; /* Adjust these values for your specific X-Y position */
+  left: 472px; /* Adjust these values for your specific X-Y position */
+  width: 1250px; /* Adjust this value for your preferred width */
+  padding: 20px; /* Adjust this value for your preferred padding */
+  background-color: rgb(21, 219, 209); /* This will set the background to light yellow */
+  border: 1px solid black; /* Optional: This will set the border to black */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Optional: This will set a shadow around the box */
+  z-index: 100; /* This ensures the box floats on top of other elements */
 }
 
 .dataCallout {
   font-size: 36px;
+}
+
+.dataCalloutXL {
+  font-size: 75px;
 }
 
 #status-message {
@@ -204,4 +216,25 @@ body {
 
 #timestampUpdated {
   text-align: center;
+}
+
+#variables-container {
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px;
+}
+
+#variables-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#variables-container th, #variables-container td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+#variables-container tr:nth-child(even) {
+  background-color: #f2f2f2;
 }
