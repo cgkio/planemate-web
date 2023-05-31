@@ -65,33 +65,33 @@
         <table>
           <thead>
             <tr>
-              <th>Variable 1</th>
-              <th>Variable 2</th>
-              <th>Variable 3</th>
-              <th>Variable 4</th>
-              <th>Variable 5</th>
-              <th>Variable 6</th>
-              <th>Variable 7</th>
+              <th>Person Pulses</th>
+              <th>Baseline Pulses</th>
+              <th>Door Delay</th>
+              <th>Boarding Start Qty</th>
+              <th>Boarding Start Time Req</th>
+              <th>Turnaround Reset</th>
+              <th>Baseline Blackout</th>
             </tr>
           </thead>
           <tbody>
             <tr id="variables-values">
-              <td>Value 1</td>
-              <td>Value 2</td>
-              <td>Value 3</td>
-              <td>Value 4</td>
-              <td>Value 5</td>
-              <td>Value 6</td>
-              <td>Value 7</td>
+              <td><span id="personDetectedPulses" class="varCallout"></span></td>
+              <td><span id="baselineDetectedPulses" class="varCallout"></span></td>
+              <td><span id="initialDoorOpenDelay" class="varCallout"></span></td>
+              <td><span id="boardingStartPersons" class="varCallout"></span></td>
+              <td><span id="boardingStartTimeWindow" class="varCallout"></span></td>
+              <td><span id="turnaroundReset" class="varCallout"></span></td>
+              <td><span id="baselineVariance" class="varCallout"></span></td>
             </tr>
             <tr id="variables-descriptions">
-              <td>Description 1</td>
-              <td>Description 2</td>
-              <td>Description 3</td>
-              <td>Description 4</td>
-              <td>Description 5</td>
-              <td>Description 6</td>
-              <td>Description 7</td>
+              <td>Number of consecutive ultrasonic variance pulses required to detect a person.</td>
+              <td>Number of consecutive ultrasonic baseline pulses required to reset person detection.</td>
+              <td>Number of milliseconds to wait before turning on the ultrasonic sensor.</td>
+              <td>Number of people in a flow to detect before declaring boarding has started.</td>
+              <td>Number of milliseconds of boarding flow.</td>
+              <td>Number of minutes to wait before resetting PlaneMate operations (for turnaround time calculations).</td>
+              <td>Number of centimeters from baseline to limit person detection.</td>
             </tr>
           </tbody>
         </table>

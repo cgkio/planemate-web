@@ -166,7 +166,7 @@
   left: 472px; /* Adjust these values for your specific X-Y position */
   width: 1250px; /* Adjust this value for your preferred width */
   padding: 20px; /* Adjust this value for your preferred padding */
-  background-color: rgb(21, 219, 209); /* This will set the background to light yellow */
+  background-color: rgb(255, 255, 255); /* This will set the background to light yellow */
   border: 1px solid black; /* Optional: This will set the border to black */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Optional: This will set a shadow around the box */
   z-index: 100; /* This ensures the box floats on top of other elements */
@@ -227,12 +227,17 @@ body {
 #variables-container table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
+
 
 #variables-container th, #variables-container td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+  width: calc(100% / 7); /* divide 100% by the number of columns */
+  white-space: normal;
+  word-wrap: break-word; 
 }
 
 #variables-container tr:nth-child(even) {

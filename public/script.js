@@ -91,28 +91,6 @@ window.addEventListener("load", function () {
     return `${days} days, ${hrs} hours, ${mins} minutes, and ${diffInSeconds} seconds ago.`;
   }
 
-  function updateVariables() {
-    // Fetch variables from your node app, this is a dummy code.
-    const variables = {
-      var1: { value: 'Value 1', description: 'Description 1' },
-      var2: { value: 'Value 2', description: 'Description 2' },
-      var3: { value: 'Value 3', description: 'Description 3' },
-      var4: { value: 'Value 4', description: 'Description 4' },
-      var5: { value: 'Value 5', description: 'Description 5' },
-      var6: { value: 'Value 6', description: 'Description 6' },
-      var7: { value: 'Value 7', description: 'Description 7' },
-    };
-  
-    // Update values and descriptions.
-    for (let i = 1; i <= 7; i++) {
-      document.getElementById('variables-values').children[i-1].innerText = variables[`var${i}`].value;
-      document.getElementById('variables-descriptions').children[i-1].innerText = variables[`var${i}`].description;
-    }
-  }
-  
-  // Call the function on page load.
-  updateVariables();  
-
   // Get reference to the status message in the database
   const statusMessageRef = database.ref("message");
 
@@ -153,4 +131,43 @@ window.addEventListener("load", function () {
     document.getElementById("planeMate-OnTime-stat").textContent =
       statsdata.planeMateOnTime;
   });
+
+    // Reference to the variables in Firebase Realtime Database
+    const variablesRef = database.ref("variables");
+
+    // Listen for changes to the lastTransaction data
+    variablesRef.on("value", (snapshot) => {
+      const vardata = snapshot.val();
+  
+      // Set the data to HTML elements
+      document.getElementById("baselineDetectedPulses").textContent = vardata.baselineDetectedPulses;
+      document.getElementById("boardingStartPersons").textContent = vardata.boardingStartPersons;
+      document.getElementById("boardingStartTimeWindow").textContent = vardata.boardingStartTimeWindow;
+      document.getElementById("initialDoorOpenDelay").textContent = vardata.initialDoorOpenDelay;
+      document.getElementById("personDetectedPulses").textContent = vardata.personDetectedPulses;
+      document.getElementById("turnaroundReset").textContent = vardata.turnaroundReset;
+      document.getElementById("baselineVariance").textContent = vardata.baselineVariance;
+    });
+  
+
+    var db = firebase.database();
+    db.ref('dashboard').on('value', function(snapshot) {
+      var data = snapshot.val();
+    
+      var calloutBox = document.getElementById('callout-box');
+      var calloutBox7 = document.getElementById('callout-box-7');
+    
+      if (data.displayLatestTransaction) {
+        calloutBox.style.display = 'block';
+      } else {
+        calloutBox.style.display = 'none';
+      }
+    
+      if (data.displayVariables) {
+        calloutBox7.style.display = 'block';
+      } else {
+        calloutBox7.style.display = 'none';
+      }
+    });
+    
 });
