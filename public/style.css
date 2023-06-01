@@ -164,7 +164,7 @@
   position: absolute; /* This will make the box float */
   top: 151px; /* Adjust these values for your specific X-Y position */
   left: 472px; /* Adjust these values for your specific X-Y position */
-  width: 1250px; /* Adjust this value for your preferred width */
+  width: 1375px; /* Adjust this value for your preferred width */
   padding: 20px; /* Adjust this value for your preferred padding */
   background-color: rgb(255, 255, 255); /* This will set the background to light yellow */
   border: 1px solid black; /* Optional: This will set the border to black */

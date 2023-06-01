@@ -72,6 +72,10 @@
               <th>Boarding Start Time Req</th>
               <th>Turnaround Reset</th>
               <th>Baseline Blackout</th>
+              <th>KPI Recalculation</th>
+              <th>Last Passenger</th>
+              <th>On-Time Determination</th>
+              <th>False Positive</th>
             </tr>
           </thead>
           <tbody>
@@ -83,15 +87,23 @@
               <td><span id="boardingStartTimeWindow" class="varCallout"></span></td>
               <td><span id="turnaroundReset" class="varCallout"></span></td>
               <td><span id="baselineVariance" class="varCallout"></span></td>
+              <td><span id="KPIrecalulation" class="varCallout"></span></td>
+              <td><span id="lastPassengerSubtraction" class="varCallout"></span></td>
+              <td><span id="onTimeDeterminationLimit" class="varCallout"></span></td>
+              <td><span id="falsePositiveDoorOpening" class="varCallout"></span></td>
             </tr>
             <tr id="variables-descriptions">
-              <td>Number of consecutive ultrasonic variance pulses required to detect a person.</td>
-              <td>Number of consecutive ultrasonic baseline pulses required to reset person detection.</td>
-              <td>Number of milliseconds to wait before turning on the ultrasonic sensor.</td>
-              <td>Number of people in a flow to detect before declaring boarding has started.</td>
-              <td>Number of milliseconds of boarding flow.</td>
-              <td>Number of minutes to wait before resetting PlaneMate operations (for turnaround time calculations).</td>
-              <td>Number of centimeters from baseline to limit person detection.</td>
+              <td>The number of ultrasonic variance pulses necessary to detect a person.</td>
+              <td>The number of ultrasonic baseline pulses needed to reset human detection.</td>
+              <td>Waiting time in milliseconds before turning on the ultrasonic sensor.</td>
+              <td>The number of persons in a flow that must be detected before indicating that boarding has begun.</td>
+              <td>The length of the boarding flow in milliseconds.</td>
+              <td>Number of minutes to wait before restarting PlaneMate procedures (for calculating turnaround time).</td>
+              <td>The number of millimeters from the baseline used as a blackout zone to not detect passengers.</td>
+              <td>The number of door open/close cycles performed before recalculating KPIs.</td>
+              <td>To account for door closure, deduct the number of seconds from the person detection timestamps.</td>
+              <td>Number of seconds before passenger boarding on the first PlaneMate will not trigger an on-time warning.</td>
+              <td>The number of seconds that must elapse before the door opens is deemed a valid loading operation.</td>
             </tr>
           </tbody>
         </table>

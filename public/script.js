@@ -147,6 +147,10 @@ window.addEventListener("load", function () {
       document.getElementById("personDetectedPulses").textContent = vardata.personDetectedPulses;
       document.getElementById("turnaroundReset").textContent = vardata.turnaroundReset;
       document.getElementById("baselineVariance").textContent = vardata.baselineVariance;
+      document.getElementById("KPIrecalulation").textContent = vardata.KPIrecalulation;
+      document.getElementById("onTimeDeterminationLimit").textContent = vardata.onTimeDeterminationLimit;
+      document.getElementById("falsePositiveDoorOpening").textContent = vardata.falsePositiveDoorOpening;
+      document.getElementById("lastPassengerSubtraction").textContent = vardata.lastPassengerSubtraction;
     });
   
 

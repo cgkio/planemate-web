@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Dashboard Control</h1>
+    <div class="switch">
+      <input type="checkbox" id="toggleLatestTransaction">
+      <label for="toggleLatestTransaction"></label> <!-- Moved text out of label -->
+    </div>
+    <label for="toggleLatestTransaction">Display Latest Transaction</label> <!-- New label for text -->
+    <div class="switch">
+      <input type="checkbox" id="toggleVariables">
+      <label for="toggleVariables"></label> <!-- Moved text out of label -->
+    </div>
+    <label for="toggleVariables">Display Variables</label> <!-- New label for text -->
+  </div>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+  <script src="mobile.js"></script>
+</body>
+</html>
