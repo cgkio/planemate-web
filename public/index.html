@@ -6,7 +6,7 @@
     <title>Door Map</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body> 
 
     <div id="status-message-container">
       <h1 id="status-message"></h1>
@@ -33,6 +33,14 @@
       <p><b>Passenger Count: </b></p>
       <span id="passenger-count" class="dataCalloutXL"></span>
       <br>
+
+      <div id="sidebar">
+        <h2>Running Log</h2>
+        <div id="logContainer">
+            <!-- Log items will be dynamically inserted here -->
+        </div>
+    </div> 
+
     </div>
     
     <div id="callout-box-2">
@@ -65,8 +73,8 @@
         <table>
           <thead>
             <tr>
-              <th>Person Pulses</th>
-              <th>Baseline Pulses</th>
+              <th>Pulse Readings</th>
+              <th>Pulses Rate</th>
               <th>Door Delay</th>
               <th>Boarding Start Qty</th>
               <th>Boarding Start Time Req</th>
@@ -80,8 +88,10 @@
           </thead>
           <tbody>
             <tr id="variables-values">
-              <td><span id="personDetectedPulses" class="varCallout"></span></td>
-              <td><span id="baselineDetectedPulses" class="varCallout"></span></td>
+              <!-- <td><span id="personDetectedPulses" class="varCallout"></span></td> -->
+              <td>6</span></td>
+              <!-- <td><span id="baselineDetectedPulses" class="varCallout"></span></td> -->
+              <td>20</td>
               <td><span id="initialDoorOpenDelay" class="varCallout"></span></td>
               <td><span id="boardingStartPersons" class="varCallout"></span></td>
               <td><span id="boardingStartTimeWindow" class="varCallout"></span></td>
@@ -93,8 +103,8 @@
               <td><span id="falsePositiveDoorOpening" class="varCallout"></span></td>
             </tr>
             <tr id="variables-descriptions">
-              <td>The number of ultrasonic variance pulses necessary to detect a person.</td>
-              <td>The number of ultrasonic baseline pulses needed to reset human detection.</td>
+              <td>The number of valid ultrasonic pulses averaged to detect a person.</td>
+              <td>Number of ultrasonic pulses per second.</td>
               <td>Waiting time in milliseconds before turning on the ultrasonic sensor.</td>
               <td>The number of persons in a flow that must be detected before indicating that boarding has begun.</td>
               <td>The length of the boarding flow in milliseconds.</td>
@@ -113,22 +123,70 @@
 
     <div id="map-container">
       <img src="map.png" alt="Map" />
-      <div id="door1" class="door"></div>
-      <div id="door2" class="door"></div>
-      <div id="door3" class="door"></div>
-      <div id="door4" class="door"></div>
-      <div id="door5" class="door"></div>
-      <div id="door6" class="door"></div>
-      <div id="door7" class="door"></div>
-      <div id="door8" class="door"></div>
-      <div id="door9" class="door"></div>
-      <div id="door10" class="door"></div>
-      <div id="door11" class="door"></div>
-      <div id="door12" class="door"></div>
-      <div id="door13" class="door"></div>
-      <div id="door14" class="door"></div>
-      <div id="door15" class="door"></div>
-      <div id="door16" class="door"></div>
+      <div class="door" id="door1">
+        <div class="half-door" id="door1-left"></div>
+        <div class="half-door" id="door1-right"></div>
+      </div>
+      <div class="door" id="door2">
+        <div class="half-door" id="door2-left"></div>
+        <div class="half-door" id="door2-right"></div>
+      </div>
+      <div class="door" id="door3">
+        <div class="half-door" id="door3-left"></div>
+        <div class="half-door" id="door3-right"></div>
+      </div>
+      <div class="door" id="door4">
+        <div class="half-door" id="door4-left"></div>
+        <div class="half-door" id="door4-right"></div>
+      </div>
+      <div class="door" id="door5">
+        <div class="half-door" id="door5-left"></div>
+        <div class="half-door" id="door5-right"></div>
+      </div>
+      <div class="door" id="door6">
+        <div class="half-door" id="door6-left"></div>
+        <div class="half-door" id="door6-right"></div>
+      </div>
+      <div class="door" id="door7">
+        <div class="half-door" id="door7-left"></div>
+        <div class="half-door" id="door7-right"></div>
+      </div>
+      <div class="door" id="door8">
+        <div class="half-door" id="door8-left"></div>
+        <div class="half-door" id="door8-right"></div>
+      </div>
+      <div class="door" id="door9">
+        <div class="half-door" id="door9-left"></div>
+        <div class="half-door" id="door9-right"></div>
+      </div>
+      <div class="door" id="door10">
+        <div class="half-door" id="door10-left"></div>
+        <div class="half-door" id="door10-right"></div>
+      </div>
+      <div class="door" id="door11">
+        <div class="half-door" id="door11-left"></div>
+        <div class="half-door" id="door11-right"></div>
+      </div>
+      <div class="door" id="door12">
+        <div class="half-door" id="door12-left"></div>
+        <div class="half-door" id="door12-right"></div>
+      </div>
+      <div class="door" id="door13">
+        <div class="half-door" id="door13-left"></div>
+        <div class="half-door" id="door13-right"></div>
+      </div>
+      <div class="door" id="door14">
+        <div class="half-door" id="door14-left"></div>
+        <div class="half-door" id="door14-right"></div>
+      </div>
+      <div class="door" id="door15">
+        <div class="half-door" id="door15-left"></div>
+        <div class="half-door" id="door15-right"></div>
+      </div>
+      <div class="door" id="door16">
+        <div class="half-door" id="door16-left"></div>
+        <div class="half-door" id="door16-right"></div>
+      </div>
     </div>    
 
     <!-- Firebase -->
