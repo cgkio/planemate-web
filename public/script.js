@@ -83,25 +83,25 @@ window.addEventListener("load", function () {
     // Set the data to HTML elements for the last reported transaction call out
     // document.getElementById("boarding-duration").textContent =
     //   data.boardingDuration.toFixed(2) + " seconds";
-    document.getElementById("boarding-duration").textContent =
-      data.boardingDuration;
-    document.getElementById("door-open-duration").textContent =
-      data.doorOpenDuration;
-    document.getElementById("close-timestamp").textContent =
-      data.closeTimestamp;
-    document.getElementById("first-passenger-timestamp").textContent =
-      data.firstPassengerTimestamp;
-    document.getElementById("last-passenger-timestamp").textContent =
-      data.lastPassengerTimestamp;
-    document.getElementById("open-timestamp").textContent = data.openTimestamp;
-    document.getElementById("planeMate-OnTimeYN").textContent =
-      data.planeMateOnTime;
-    document.getElementById("location").textContent = data.location;
-    document.getElementById("turnaround-time").textContent =
-      data.turnaroundTime;
-    // document.getElementById("people-count").textContent = data.peopleCount;
-    document.getElementById("passenger-count").textContent =
-      data.activePassengerCount;
+    // document.getElementById("boarding-duration").textContent =
+    //   data.boardingDuration;
+    // document.getElementById("door-open-duration").textContent =
+    //   data.doorOpenDuration;
+    // document.getElementById("close-timestamp").textContent =
+    //   data.closeTimestamp;
+    // document.getElementById("first-passenger-timestamp").textContent =
+    //   data.firstPassengerTimestamp;
+    // document.getElementById("last-passenger-timestamp").textContent =
+    //   data.lastPassengerTimestamp;
+    // document.getElementById("open-timestamp").textContent = data.openTimestamp;
+    // document.getElementById("planeMate-OnTimeYN").textContent =
+    //   data.planeMateOnTime;
+    // document.getElementById("location").textContent = data.location;
+    // document.getElementById("turnaround-time").textContent =
+    //   data.turnaroundTime;
+    // // document.getElementById("people-count").textContent = data.peopleCount;
+    // document.getElementById("passenger-count").textContent =
+    //   data.activePassengerCount;
   });
 
  // Function to calculate the time difference between now and the last updated timestamp
@@ -144,29 +144,29 @@ function getTimeSince(unixTimestampMilliseconds) {
   return `${days} days, ${hrs} hours, ${mins} minutes, and ${diffInSeconds} seconds ago.`;
 }
 
-  // Get reference to the status message in the database
-  const statusMessageRef = database.ref("message");
+  // // Get reference to the status message in the database
+  // const statusMessageRef = database.ref("message");
 
-  // Listen for changes to the status message
-  statusMessageRef.on("value", (snapshot) => {
-    const message = snapshot.val();
-    const statusMessageElement = document.getElementById("status-message");
+  // // Listen for changes to the status message
+  // statusMessageRef.on("value", (snapshot) => {
+  //   const message = snapshot.val();
+  //   const statusMessageElement = document.getElementById("status-message");
 
-    statusMessageElement.innerText = message.main;
+  //   statusMessageElement.innerText = message.main;
 
-    const timestampElement = document.getElementById("timestampUpdated");
-    timestampElement.innerText = getTimeSinceUpdate(message.updated);
+  //   const timestampElement = document.getElementById("timestampUpdated");
+  //   timestampElement.innerText = getTimeSinceUpdate(message.updated);
 
-    // Clear the previous interval if it exists
-    if (window.timeSinceUpdateInterval) {
-      clearInterval(window.timeSinceUpdateInterval);
-    }
+  //   // Clear the previous interval if it exists
+  //   if (window.timeSinceUpdateInterval) {
+  //     clearInterval(window.timeSinceUpdateInterval);
+  //   }
 
-    // Update the "time since last update" every second
-    window.timeSinceUpdateInterval = setInterval(() => {
-      timestampElement.innerText = getTimeSinceUpdate(message.updated);
-    }, 1000);
-  });
+  //   // Update the "time since last update" every second
+  //   window.timeSinceUpdateInterval = setInterval(() => {
+  //     timestampElement.innerText = getTimeSinceUpdate(message.updated);
+  //   }, 1000);
+  // });
 
   // Reference to the stats in Firebase Realtime Database
   const statsRef = database.ref("stats");
@@ -253,6 +253,9 @@ function getTimeSince(unixTimestampMilliseconds) {
     logItem.appendChild(logMessage);
     logItem.appendChild(logTimestamp);
     logContainer.appendChild(logItem);
+
+    logItem.className = 'logCard';
+
 }
 
 // Call this function every second to update all the timestamps

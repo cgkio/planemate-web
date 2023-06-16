@@ -85,15 +85,15 @@
 } */
 
 #callout-box {
-  position: absolute; /* This will make the box float */
-  top: 120px; /* Adjust these values for your specific X-Y position */
-  left: 50px; /* Adjust these values for your specific X-Y position */
-  width: 350px; /* Adjust this value for your preferred width */
-  padding: 20px; /* Adjust this value for your preferred padding */
-  background-color: lightyellow; /* This will set the background to light yellow */
-  border: 1px solid black; /* Optional: This will set the border to black */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Optional: This will set a shadow around the box */
-  z-index: 100; /* This ensures the box floats on top of other elements */
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 380px;
+  padding: 20px;
+  background-color: lightyellow;
+  border: 1px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  z-index: 100;
 }
 
 #callout-box-2 {
@@ -262,4 +262,18 @@ body {
 
 .closed-door {
   background-color: red;
+}
+
+.logCard {
+  width: 90%; /* Set the width of the card */
+  padding: 20px; /* Set the padding inside the card */
+  margin-bottom: 20px; /* Add some space below each card */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Add some shadow to make the card look 3D */
+  transition: 0.3s; /* Add animation when hovering over the card */
+  border-radius: 5px; /* Round the corners of the card */
+  background-color: #fff; /* Set the background color of the card */
+}
+
+.logCard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Increase the shadow when hovering */
 }
