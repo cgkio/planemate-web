@@ -265,9 +265,10 @@ body {
 }
 
 .logCard {
+  margin: 0px 0; /* Adjust as needed */
   width: 90%; /* Set the width of the card */
-  padding: 20px; /* Set the padding inside the card */
-  margin-bottom: 20px; /* Add some space below each card */
+  padding: 8px; /* Set the padding inside the card */
+  margin-bottom: 10px; /* Add some space below each card */
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Add some shadow to make the card look 3D */
   transition: 0.3s; /* Add animation when hovering over the card */
   border-radius: 5px; /* Round the corners of the card */
@@ -276,4 +277,8 @@ body {
 
 .logCard:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); /* Increase the shadow when hovering */
+}
+
+.timestamp-text {
+  font-size: 0.6em; /* Adjust as needed */
 }

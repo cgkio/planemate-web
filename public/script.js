@@ -235,28 +235,52 @@ function getTimeSince(unixTimestampMilliseconds) {
     }
   });
 
-  function updateLog(item, index) {
-    let logContainer = document.getElementById("logContainer");
-    let logItem = document.createElement("div");
-    logItem.id = `logItem${index}`;
+//   function updateLog(item, index) {
+//     let logContainer = document.getElementById("logContainer");
+//     let logItem = document.createElement("div");
+//     logItem.id = `logItem${index}`;
 
-    let logMessage = document.createElement("p");
-    logMessage.id = `logMessage${index}`;
-    logMessage.innerText = item.message;
+//     let logMessage = document.createElement("p");
+//     logMessage.id = `logMessage${index}`;
+//     logMessage.innerText = item.message;
 
-    let logTimestamp = document.createElement("p");
-    logTimestamp.id = `logTimestamp${index}`;
-    logTimestamp.classList.add("timestamp-text");
-    logTimestamp.dataset.timestamp = item.timestamp;  // store original timestamp in a data attribute
-    logTimestamp.innerText = `${getTimeSince(item.timestamp)} ago`;
+//     let logTimestamp = document.createElement("p");
+//     logTimestamp.id = `logTimestamp${index}`;
+//     logTimestamp.classList.add("timestamp-text");
+//     logTimestamp.dataset.timestamp = item.timestamp;  // store original timestamp in a data attribute
+//     logTimestamp.innerText = `${getTimeSince(item.timestamp)} ago`;
 
-    logItem.appendChild(logMessage);
-    logItem.appendChild(logTimestamp);
-    logContainer.appendChild(logItem);
+//     logItem.appendChild(logMessage);
+//     logItem.appendChild(logTimestamp);
+//     logContainer.appendChild(logItem);
 
-    logItem.className = 'logCard';
+//     logItem.className = 'logCard';
+
+// }
+
+function updateLog(item, index) {
+  let logContainer = document.getElementById("logContainer");
+  let logItem = document.createElement("div");
+  logItem.id = `logItem${index}`;
+
+  let logMessage = document.createElement("p");
+  logMessage.id = `logMessage${index}`;
+  logMessage.innerText = item.message;
+
+  let logTimestamp = document.createElement("p");
+  logTimestamp.id = `logTimestamp${index}`;
+  logTimestamp.classList.add("timestamp-text");
+  logTimestamp.dataset.timestamp = item.timestamp;  // store original timestamp in a data attribute
+  logTimestamp.innerText = `${getTimeSince(item.timestamp)} ago`;
+
+  logItem.appendChild(logMessage);
+  logItem.appendChild(logTimestamp);
+  logContainer.appendChild(logItem);
+
+  logItem.className = 'logCard animate__animated animate__fadeInUp';
 
 }
+
 
 // Call this function every second to update all the timestamps
 setInterval(() => {
