@@ -73,101 +73,6 @@ window.addEventListener("load", function () {
       : "half-door closed-door";
   }
 
-  // Reference to the lastTransaction in Firebase Realtime Database
-  const lastTransactionRef = database.ref("lastTransaction");
-
-  // Listen for changes to the lastTransaction data
-  lastTransactionRef.on("value", (snapshot) => {
-    const data = snapshot.val();
-
-    // Set the data to HTML elements for the last reported transaction call out
-    // document.getElementById("boarding-duration").textContent =
-    //   data.boardingDuration.toFixed(2) + " seconds";
-    // document.getElementById("boarding-duration").textContent =
-    //   data.boardingDuration;
-    // document.getElementById("door-open-duration").textContent =
-    //   data.doorOpenDuration;
-    // document.getElementById("close-timestamp").textContent =
-    //   data.closeTimestamp;
-    // document.getElementById("first-passenger-timestamp").textContent =
-    //   data.firstPassengerTimestamp;
-    // document.getElementById("last-passenger-timestamp").textContent =
-    //   data.lastPassengerTimestamp;
-    // document.getElementById("open-timestamp").textContent = data.openTimestamp;
-    // document.getElementById("planeMate-OnTimeYN").textContent =
-    //   data.planeMateOnTime;
-    // document.getElementById("location").textContent = data.location;
-    // document.getElementById("turnaround-time").textContent =
-    //   data.turnaroundTime;
-    // // document.getElementById("people-count").textContent = data.peopleCount;
-    // document.getElementById("passenger-count").textContent =
-    //   data.activePassengerCount;
-  });
-
- // Function to calculate the time difference between now and the last updated timestamp
-function getTimeSince(unixTimestampMilliseconds) {
-  if (isNaN(unixTimestampMilliseconds)) {
-    return "Invalid timestamp!";
-  }
-
-  const now = new Date();
-  const updatedTimestamp = new Date(unixTimestampMilliseconds); // Convert from UNIX timestamp to Date object
-  let diffInSeconds = Math.floor((now - updatedTimestamp) / 1000);
-
-  let days = Math.floor(diffInSeconds / (3600 * 24));
-  diffInSeconds -= days * 3600 * 24;
-  let hrs = Math.floor(diffInSeconds / 3600);
-  diffInSeconds -= hrs * 3600;
-  let mins = Math.floor(diffInSeconds / 60);
-  diffInSeconds -= mins * 60;
-
-  return `${days} days, ${hrs} hours, ${mins} minutes, and ${diffInSeconds} seconds ago.`;
-}
-
-// Function to calculate the time difference between now and the last updated timestamp
-function getTimeSince(unixTimestampMilliseconds) {
-  if (isNaN(unixTimestampMilliseconds)) {
-    return "Invalid timestamp!";
-  }
-
-  const now = new Date();
-  const updatedTimestamp = new Date(unixTimestampMilliseconds); // Convert from UNIX timestamp to Date object
-  let diffInSeconds = Math.floor((now - updatedTimestamp) / 1000);
-
-  let days = Math.floor(diffInSeconds / (3600 * 24));
-  diffInSeconds -= days * 3600 * 24;
-  let hrs = Math.floor(diffInSeconds / 3600);
-  diffInSeconds -= hrs * 3600;
-  let mins = Math.floor(diffInSeconds / 60);
-  diffInSeconds -= mins * 60;
-
-  return `${days} days, ${hrs} hours, ${mins} minutes, and ${diffInSeconds} seconds ago.`;
-}
-
-  // // Get reference to the status message in the database
-  // const statusMessageRef = database.ref("message");
-
-  // // Listen for changes to the status message
-  // statusMessageRef.on("value", (snapshot) => {
-  //   const message = snapshot.val();
-  //   const statusMessageElement = document.getElementById("status-message");
-
-  //   statusMessageElement.innerText = message.main;
-
-  //   const timestampElement = document.getElementById("timestampUpdated");
-  //   timestampElement.innerText = getTimeSinceUpdate(message.updated);
-
-  //   // Clear the previous interval if it exists
-  //   if (window.timeSinceUpdateInterval) {
-  //     clearInterval(window.timeSinceUpdateInterval);
-  //   }
-
-  //   // Update the "time since last update" every second
-  //   window.timeSinceUpdateInterval = setInterval(() => {
-  //     timestampElement.innerText = getTimeSinceUpdate(message.updated);
-  //   }, 1000);
-  // });
-
   // Reference to the stats in Firebase Realtime Database
   const statsRef = database.ref("stats");
 
@@ -235,72 +140,30 @@ function getTimeSince(unixTimestampMilliseconds) {
     }
   });
 
-//   function updateLog(item, index) {
-//     let logContainer = document.getElementById("logContainer");
-//     let logItem = document.createElement("div");
-//     logItem.id = `logItem${index}`;
+  const logRef = firebase.database().ref(`runningLog/lastTen`);
 
-//     let logMessage = document.createElement("p");
-//     logMessage.id = `logMessage${index}`;
-//     logMessage.innerText = item.message;
+  // Attach listener for child_added event.
+  logRef.on("child_added", function (snapshot) {
+    let log = snapshot.val();
 
-//     let logTimestamp = document.createElement("p");
-//     logTimestamp.id = `logTimestamp${index}`;
-//     logTimestamp.classList.add("timestamp-text");
-//     logTimestamp.dataset.timestamp = item.timestamp;  // store original timestamp in a data attribute
-//     logTimestamp.innerText = `${getTimeSince(item.timestamp)} ago`;
+    // Create a new log card and add it to the logContainer.
+    let logCard = document.createElement("div");
+    logCard.className = "logCard animate__animated animate__backInDown";
+    logCard.id = snapshot.key; // Store Firebase key to match card with data.
+    logCard.innerHTML = `
+        <h4>${moment(log.timestamp).format("LTS")}</h4>
+        <p>${log.message}</p>
+    `;
 
-//     logItem.appendChild(logMessage);
-//     logItem.appendChild(logTimestamp);
-//     logContainer.appendChild(logItem);
-
-//     logItem.className = 'logCard';
-
-// }
-
-function updateLog(item, index) {
-  let logContainer = document.getElementById("logContainer");
-  let logItem = document.createElement("div");
-  logItem.id = `logItem${index}`;
-
-  let logMessage = document.createElement("p");
-  logMessage.id = `logMessage${index}`;
-  logMessage.innerText = item.message;
-
-  let logTimestamp = document.createElement("p");
-  logTimestamp.id = `logTimestamp${index}`;
-  logTimestamp.classList.add("timestamp-text");
-  logTimestamp.dataset.timestamp = item.timestamp;  // store original timestamp in a data attribute
-  logTimestamp.innerText = `${getTimeSince(item.timestamp)} ago`;
-
-  logItem.appendChild(logMessage);
-  logItem.appendChild(logTimestamp);
-  logContainer.appendChild(logItem);
-
-  logItem.className = 'logCard animate__animated animate__fadeInUp';
-
-}
-
-
-// Call this function every second to update all the timestamps
-setInterval(() => {
-  let timestamps = document.getElementsByClassName("timestamp-text");
-  for (let i = 0; i < timestamps.length; i++) {
-      let timestamp = parseInt(timestamps[i].dataset.timestamp); // get the original timestamp value
-      timestamps[i].innerText = `${getTimeSince(timestamp)} ago`;
-  }
-}, 1000);
-
-const logRef = firebase.database().ref(`runningLog/lastTen`);
-logRef.on("value", (snapshot) => {
-    const logData = snapshot.val();
-    let index = 1;
-    for (let key in logData) {
-        const data = logData[key];
-        // Pass in the time since the last update using the getTimeSince function
-        updateLog(data, index);
-        index++;
-    }
+    // Insert the new log card at the top of the logContainer.
+    logContainer.insertBefore(logCard, logContainer.firstChild);
 });
-  
+
+  // Attach listener for child_removed event.
+  logRef.on("child_removed", function (snapshot) {
+    let logCard = document.getElementById(snapshot.key);
+    if (logCard) {
+      logContainer.removeChild(logCard);
+    }
+  });
 });

@@ -1,9 +1,21 @@
+/*** uncss> filename: public/style.css ***/
+/* style.css */
+
 .door {
   position: absolute;
   width: 30px;
   height: 30px;
   border-radius: 50%;
 }
+
+/* @keyframes flash {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+} */
+
+/* .flash {
+  animation: flash 1s linear infinite;
+} */
 
 #callout-box {
   position: absolute;
@@ -128,6 +140,7 @@ body {
   table-layout: fixed;
 }
 
+
 #variables-container th, #variables-container td {
   border: 1px solid #dddddd;
   text-align: left;
@@ -160,15 +173,4 @@ body {
   justify-content: space-between;
   overflow: hidden; /* Hide cards that slide out of view */
   transition: transform 0.5s ease-out;
-}
-
-.logCard {
-  margin: 0px 0; /* Adjust as needed */
-  width: 90%; /* Set the width of the card */
-  padding: 8px; /* Set the padding inside the card */
-  margin-bottom: 10px; /* Add some space below each card */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* Add some shadow to make the card look 3D */
-  transition: 0.3s; /* Add animation when hovering over the card */
-  border-radius: 5px; /* Round the corners of the card */
-  background-color: #fff; /* Set the background color of the card */
 }
