@@ -167,3 +167,10 @@ window.addEventListener("load", function () {
     }
   });
 });
+
+function updateClock(){
+  const now = new Date();
+  const formattedTime = now.toLocaleTimeString(); // Format the time in 12-hour format
+  document.getElementById('clock').innerText = formattedTime;
+}
+setInterval(updateClock, 1000); // Update the clock every second
